@@ -1,4 +1,4 @@
-package step1.bj1001;
+package step1.bj10998;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +12,6 @@ public class Main {
         String[] line = br.readLine().split(" ");
         Integer a = Integer.valueOf(line[0]);
         Integer b = Integer.parseInt(line[1]);
-        System.out.println(a-b);
+        System.out.println(a*b);
     }
 }
