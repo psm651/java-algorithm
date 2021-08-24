@@ -13,8 +13,10 @@ public class Main {
         int N = Integer.parseInt(bf.readLine());
         for (int i = 0; i < N; i++) {
             if (checkGroupWord()) {
+                count ++;
             }
         }
+        System.out.println(count);
     }
 
     private static boolean checkGroupWord() throws IOException {
