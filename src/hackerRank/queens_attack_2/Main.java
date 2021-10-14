@@ -3,12 +3,15 @@ package hackerRank.queens_attack_2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Main {
     static private int n;
     static private int k;
-    static private int[][] board;
+    //static private int[][] board;
+    static private Map<String, Boolean> enemies = new HashMap<>();
     static private int qx;//퀸 x좌표
     static private int qy;//퀸 y좌표
     static private int result;
@@ -23,18 +26,26 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine()," ");
         n = Integer.parseInt(st.nextToken());
         k = Integer.parseInt(st.nextToken());
-        board = new int[n+1][n+1];
+
+//        board = new int[n+1][n+1];
 
         StringTokenizer st1 = new StringTokenizer(br.readLine()," ");
         qx = Integer.parseInt(st1.nextToken());
         qy = Integer.parseInt(st1.nextToken());
 
+
         for (int i = 0; i < k; i++) {
             StringTokenizer st2 = new StringTokenizer(br.readLine()," ");
-            int s = Integer.parseInt(st2.nextToken());
-            int e = Integer.parseInt(st2.nextToken());
-            board[s][e] = -1;
+            String enemy = st2.nextToken() + "-" + st2.nextToken();
+            enemies.put(enemy, true);
         }
+
+//        for (int i = 0; i < k; i++) {
+//            StringTokenizer st2 = new StringTokenizer(br.readLine()," ");
+//            int s = Integer.parseInt(st2.nextToken());
+//            int e = Integer.parseInt(st2.nextToken());
+//            board[s][e] = -1;
+//        }
         //init-setting
 
         //8방향돌기
@@ -49,9 +60,12 @@ public class Main {
                 if (nx > n || ny > n || nx <= 0 || ny <= 0) {
                     break;
                 }
-                if (board[nx][ny] == -1) {
+                if (enemies.containsKey(String.valueOf(nx) + "-" + String.valueOf(ny))) {
                     break;
                 }
+//                if (board[nx][ny] == -1) {
+//                    break;
+//                }
                     result++;
             }
         }
