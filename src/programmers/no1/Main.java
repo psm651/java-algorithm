@@ -1,4 +1,4 @@
-package hackerRank.programmers;
+package programmers.no1;
 
 public class Main {
     public static void main(String[] args) {
