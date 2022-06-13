@@ -2,10 +2,8 @@ package step1.bj17144;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -19,6 +17,7 @@ public class Main {
         int[] dx = {0, 0, -1, 1};
         int[] dy = {-1, 1, 0, 0};
         int[][] map = new int[R][C];
+        int result = 0;
         for (int i = 0; i < R; i++) {
 //            map[i] = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
             String[] tmpMap = br.readLine().split(" ");
@@ -45,7 +44,7 @@ public class Main {
                     for (int l = 0; l < 4; l++) {
                         int nx = j + dx[l];
                         int ny = k + dy[l];
-                        if (nx >= 0 && nx < i && ny >= 0 && ny < k && map[nx][ny] != -1) {
+                        if (nx >= 0 && nx < R && ny >= 0 && ny < C && map[nx][ny] != -1) {
                             temp[j][k] -= (map[j][k] / 5);
                             temp[nx][ny] += (map[j][k] / 5);
                         }
@@ -53,10 +52,6 @@ public class Main {
                 }
             }
             map = temp;
-            for (int r = 0; r < map.length; r++) {
-                System.out.println(Arrays.toString(map[r]));
-            }
-
             //청소
             int top = airCleanerRows.get(0);
             for (int j = top - 1; j > 0; j--) {
@@ -83,21 +78,20 @@ public class Main {
             for (int j = R - 1; j > bottom; j--) {
                 map[j][C-1] = map[j-1][C-1];
             }
-
             for (int j = C - 1; j > 1; j--) {
                 map[bottom][j] = map[bottom][j-1];
             }
-
             map[bottom][1] = 0;
 
         }
 
-        System.out.println(airCleanerRows.get(0));
-        System.out.println(airCleanerRows.get(1));
-        for (int i = 0; i < map.length; i++) {
-            System.out.println(Arrays.toString(map[i]));
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                if (map[i][j] != -1) {
+                    result += map[i][j];
+                }
+            }
         }
-
+        System.out.println(result);
     }
-
 }
