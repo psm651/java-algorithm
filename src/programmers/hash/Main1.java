@@ -13,9 +13,9 @@ public class Main1 {
         }
         int count = nums.length / 2;
         if (set.size() > count) {
-            return count;
+//            return count;
         } else {
-            return set.size();
+//            return set.size();
         }
     }
 }
